@@ -5,17 +5,18 @@ body{
 
 .container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    
     
     
     
 }
 
 .card{
-    width: 50%;
-    height: 50%;
+    width: 80%;
+    height: 80%;
     background-color: rgb(43, 42, 42);
     border-color: rgb(195, 65, 255);
     border-style: solid;
@@ -24,7 +25,17 @@ body{
     color: white;
     margin: 10px;
     padding: 5px;
-    display: flex;
-    align-items: center;
+    justify-items: center;
     justify-content: center;
+    align-items: center;
+    display: block;
 }
+#front{
+
+}
+
+.link{
+    color: white;
+}
+
+
