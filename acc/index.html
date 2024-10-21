@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+
+
+
+  <head>
+    <title> Log-in layout 1</title>
+  </head>
+  <!-- Custom Styles -->
+  <body>
+    
+  <div class="wrapper">
+    <form action="Account.html" method="post">
+    <h1>FlashPoint!</h1>
+     <h3>Limitless Adventure Awaits</h3>
+    <div class="Username">
+      <label for="uname">Username:</label>
+        <div class="contain_input">
+          <input type="text" placeholder="Enter Username" name="uname" required style="padding: 5px;"></input>
+          <i class='bx bxs-user' id="user_icon"></i>
+        </div>
+    </div>  
+ 
+    <div class="Password">
+      <label for="Password">Password:
+      <div class="contain_input">
+        <input type="Password" placeholder="Enter Password"value="" id="myInput"  id="Password" name="Password" required style="padding: 5px;"></input>
+        <i class='bx bxs-lock-alt' id="pass_icon"></i>
+      </div>
+    </div>
+    <div class="new_container"> 
+      <div class="Show-password">
+        <input type="checkbox" onclick="myFunction()">Show Password</input> 
+    </div>
+      <a href="Account.html">Forgot Password?</a></span>
+  
+    
+    </div>
+    <h3 style ="text-align:center">
+      <input type="submit" name= "login" value="Log-in">
+      </input> </h3>
+
+   
+  
+
+    <div class="waterhell">
+     <p>
+       <a href="Account.html"> Register
+       </a>
+       </br>
+       <div class="submit">
+  
+</div>
+</br>
+    <h3>
+      <marquee> <p style="color:cyan">
+      FlashPoint!</p></marquee>
+    </h3>
+<script>
+      function myFunction() {
+var x = document.getElementById("myInput");
+if (x.type === "password") {
+  x.type = "text";
+} else {
+  x.type = "password";
+}
+} 
+</script> 
+</form>
+</div>
+    </body>
+  </html>

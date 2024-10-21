@@ -25,3 +25,7 @@ const createFlashcardElement = ({front, back}) =>{
 };
 
 flashcards.forEach(createFlashcardElement)
+
+flashcardsForm.onsubmit = e => {
+    e.preventDefault();
+}
