@@ -7,14 +7,10 @@
 
   <link rel="stylesheet" href="style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
-
-
-
-  <head>
-    <title> Log-in layout 1</title>
-  </head>
+  <title> Log-in layout 1</title>
+</head>
   <!-- Custom Styles -->
-  <body>
+<body>
     
   <div class="wrapper">
     <form action="Account.html" method="post">
@@ -22,10 +18,10 @@
      <h3>Limitless Adventure Awaits</h3>
     <div class="Username">
       <label for="uname">Username:</label>
-        <div class="contain_input">
+      <div class="contain_input">
           <input type="text" placeholder="Enter Username" name="uname" required style="padding: 5px;"></input>
           <i class='bx bxs-user' id="user_icon"></i>
-        </div>
+      </div>
     </div>  
  
     <div class="Password">
@@ -38,14 +34,14 @@
     <div class="new_container"> 
       <div class="Show-password">
         <input type="checkbox" onclick="myFunction()">Show Password</input> 
-    </div>
-      <a href="Account.html">Forgot Password?</a></span>
+      </div>
+    <a href="Account.html">Forgot Password?</a>
   
     
     </div>
     <h3 style ="text-align:center">
       <input type="submit" name= "login" value="Log-in">
-      </input> </h3>
+    </h3>
 
    
   
@@ -55,9 +51,7 @@
        <a href="Account.html"> Register
        </a>
        </br>
-       <div class="submit">
-  
-</div>
+    </div>
 </br>
     <h3>
       <marquee> <p style="color:cyan">
@@ -73,7 +67,7 @@ if (x.type === "password") {
 }
 } 
 </script> 
-</form>
-</div>
-    </body>
+    </form>
+  </div>
+</body>
   </html>
