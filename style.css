@@ -2,10 +2,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(20, 20, 20);
+    background-color: rgb(22, 22, 22);
     font-family:monospace;
 }
-
+/*home.php start*/
 .container{
     display: flex;
     flex-direction: column;
@@ -14,8 +14,8 @@ body{
 }
 
 .card{
-    width: 408px;
-    height: 278px;
+    width: 204px;
+    height: 139px;
     background-color: rgb(43, 42, 42);
     border-color: rgb(195, 65, 255);
     border-style: solid;
@@ -27,8 +27,10 @@ body{
     justify-items: center;
     justify-content: center;
     align-items: center;
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .submit{
     width: 300px;
@@ -44,26 +46,37 @@ body{
     align-items: center;
 }
 
+.cardbutton
+{ 
+  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 15px;
+  border: none;
+  background-color: #531358;
+  color: white;
+}
 
 .link{
     color: white;
 }
+/*home.php end*/
 
-
+/*index.php*/
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    
     font-family: monospace;
   }
   
   .wrapper{
-   width: 420px;
-   background: skyblue; 
-   color: #fff;
-   margin: 100px;
-   border-radius: 20px;
-   padding: 10px;
+    width: auto;
+    background: rgb(43, 42, 42); 
+    border-color: rgb(195, 65, 255);
+    border-style: solid;
+    border-width: thin;
+    color: #fff;
+    margin: 100px;
+    border-radius: 20px;
+    padding: 15px;
   }
   
   .wrapper h1{
@@ -75,14 +88,13 @@ body{
     font-size:15;
     text-align:center;
   }
-  .wrapper .Username{
+  .wrapper .input_container{
    position: relative;
-    width: 100%;  
-    height: 30px;
     background: transparent;
+    margin: 10px;
   }
   
-  .Username input{
+  .input_container input{
     width:100%;
     height:100%;
     background: transparent;
@@ -92,31 +104,29 @@ body{
     border-radius: 40px;
   }
   
-  .Username i{
+  .input_container i{
     right: 50px;
     top: 15%;
-    font-size: 20px;
+    font-size: 16px;
   }
   
   #user_icon{
     position: absolute;
     right: 10px;
-    top: 32px;
+    top: 6px;
     
   }
   #pass_icon{
     position: absolute;
     right: 10px;
-    top: 32px;
+    top: 6px;
     
   }
   
   .wrapper .Password{
-   position: relative;
-    width: 100%;  
-    height: 30px;
+    position: relative;
     background: transparent;
-    margin: 30px 0;
+    margin: 10px ;
   }
   
   .Password input{
@@ -130,11 +140,11 @@ body{
     
   }
   
-  .new_container{
+  .show_pass{
     display: flex;
     align-items: center;
     align-content: center;
-    text-align: right;
+
     padding-right: 5px;
   }
   
