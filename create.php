@@ -6,7 +6,8 @@ session_regenerate_id(true);
 // Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['status' => 'error', 'message' => 'User not logged in']);
-    exit;
+    header("Location: index.php");
+    exit();
 }
 
 // Read and decode the JSON data sent from JavaScript

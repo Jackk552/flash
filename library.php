@@ -1,22 +1,34 @@
 <?php
 session_start();
 include 'connect.php';
+session_regenerate_id(true);
 
 if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['status' => 'error', 'message' => 'User not logged in']);
     header("Location: index.php");
-    exit;
+    exit();
 }
 
 $userId = $_SESSION['user_id'];
 
-// Fetch private flashcards
-$stmt = $mysqli->prepare("SELECT id, name FROM flashcardsets WHERE user_id = ? AND is_public = 0");
+// Fetch private flashcards with creator's username
+$stmt = $mysqli->prepare("
+    SELECT fs.id, fs.name, a.username 
+    FROM flashcardsets fs
+    JOIN accounts a ON fs.user_id = a.id
+    WHERE fs.user_id = ? AND fs.is_public = 0
+");
 $stmt->bind_param("i", $userId);
 $stmt->execute();
 $privateResult = $stmt->get_result();
 
-// Fetch public flashcards
-$stmt = $mysqli->prepare("SELECT id, name FROM flashcardsets WHERE is_public = 1");
+// Fetch public flashcards with creator's username
+$stmt = $mysqli->prepare("
+    SELECT fs.id, fs.name, a.username 
+    FROM flashcardsets fs
+    JOIN accounts a ON fs.user_id = a.id
+    WHERE fs.is_public = 1
+");
 $stmt->execute();
 $publicResult = $stmt->get_result();
 ?>
@@ -31,35 +43,45 @@ $publicResult = $stmt->get_result();
 </head>
 <body>
     <div class="wrapper">
-    <h1>Flashcards Library</h1>
+        <h1>Flashcards Library</h1>
 
-    <section>
-        <h2>Your Private Flashcards</h2>
-        <?php if ($privateResult->num_rows > 0): ?>
-            <ul>
-                <?php while ($row = $privateResult->fetch_assoc()): ?>
-                    <li><a href="answer_flashcards.php?set_id=<?= $row['id'] ?>&is_public=0"><?= htmlspecialchars($row['name']) ?></a></li>
-                <?php endwhile; ?>
-            </ul>
-        <?php else: ?>
-            <p>No private flashcards found.</p>
-        <?php endif; ?>
-    </section>
+        <section>
+            <h2>Your Private Flashcards</h2>
+            <?php if ($privateResult->num_rows > 0): ?>
+                <ul>
+                    <?php while ($row = $privateResult->fetch_assoc()): ?>
+                        <li>
+                            <a href="answer_flashcards.php?set_id=<?= htmlspecialchars($row['id']) ?>&is_public=0">
+                                <?= htmlspecialchars($row['name']) ?>
+                            </a> 
+                            - Created by: <?= htmlspecialchars($row['username']) ?>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            <?php else: ?>
+                <p>No private flashcards found.</p>
+            <?php endif; ?>
+        </section>
 
-    <section>
-        <h2>Public Flashcards</h2>
-        <?php if ($publicResult->num_rows > 0): ?>
-            <ul>
-                <?php while ($row = $publicResult->fetch_assoc()): ?>
-                    <li><a href="answer_flashcards.php?set_id=<?= $row['id'] ?>&is_public=1"><?= htmlspecialchars($row['name']) ?></a></li>
-                <?php endwhile; ?>
-            </ul>
-        <?php else: ?>
-            <p>No public flashcards found.</p>
-        <?php endif; ?>
-    </section>
+        <section>
+            <h2>Public Flashcards</h2>
+            <?php if ($publicResult->num_rows > 0): ?>
+                <ul>
+                    <?php while ($row = $publicResult->fetch_assoc()): ?>
+                        <li>
+                            <a href="answer_flashcards.php?set_id=<?= htmlspecialchars($row['id']) ?>&is_public=1">
+                                <?= htmlspecialchars($row['name']) ?>
+                            </a> 
+                            - Created by: <?= htmlspecialchars($row['username']) ?>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            <?php else: ?>
+                <p>No public flashcards found.</p>
+            <?php endif; ?>
+        </section>
 
-    <a href="home.php">Back to Home</a>
+        <a href="home.php">Back to Home</a>
     </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-function saveFlashcards() {
+function saveEditFlashcards() {
     // Flag for validation
     let isValid = true;
 
@@ -76,7 +76,7 @@ function saveFlashcards() {
     };
 
     // Send the data to the server
-    fetch('http://localhost/Flahcards/create.php', {
+    fetch('http://localhost/Flahcards/update.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

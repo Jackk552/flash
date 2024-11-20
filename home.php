@@ -1,16 +1,14 @@
 <?php
     session_start();
     session_regenerate_id(true);    
-    include("connect.php");
+    require 'connect.php'; 
 
-    if (isset($_SESSION['user_id'])) {
-    $userId = $_SESSION['user_id'];
-    // Now you can use $userId for database operations
-    } else {
-    // User is not logged in, handle accordingly (redirect, error message, etc.)
-    header("Location: login.php"); // Redirect to login page
-    exit;
-    }require 'connect.php';  // Database connection file
+    if (!isset($_SESSION['user_id'])) {
+        echo json_encode(['status' => 'error', 'message' => 'User not logged in']);
+        header("Location: index.php");
+        exit();
+    }
+    
     
     
 ?>
@@ -27,7 +25,7 @@
    <nav>
         <div class="container">
                 <div class="card">
-                    <a class="link" href=""><h1>Home</h1></a>
+                    <a class="link" href="flashcards_manager.php"><h1>Flashcards Manager</h1></a>
                 </div>
                 <div class="card">
                     <a class="link" href="flashcardcreation.php"><h1>Create Flashcards</h1></a>
@@ -39,7 +37,6 @@
                     <a href="logout.php" class="link"><h1>Logout</h1></a>
                 </div>
         </div>
-</ul></nav>
-<script src="index.js"></script>
+</nav>
 </body>
 </html>
